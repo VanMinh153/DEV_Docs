@@ -1,0 +1,11 @@
+git config --global user.name "VanMinh153"
+git config --global user.email "minhnguyenvh.703@gmail.com"
+
+git config --global user.name "MinhModerator"
+git config --global user.email "minh.nguyenvan2@vti.com.vn"
+
+git config --global user.name
+git config --global user.email
+
+git rebase -i HEAD~1
+git push origin main --force

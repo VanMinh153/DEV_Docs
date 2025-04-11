@@ -1,0 +1,35 @@
+# Permit script execution for a session
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+# Permit script execution for CurrentUser
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Change Windows to dark theme
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize /v AppsUseLightTheme /t REG_DWORD /d 0 /f
+reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize /v SystemUsesLightTheme /t REG_DWORD /d 0 /f
+taskkill /f /im explorer.exe & start explorer.exe
+
+# Change Windows background, Restart require
+reg add "HKCU\Control Panel\Desktop" /v WallPaper /t REG_SZ /d "C:\temp\Solid_Black.jpg" /f
+RUNDLL32.EXE user32.dll, UpdatePerUserSystemParameters
+# Or
+$WallpaperPath = "C:\temp\Solid_Black.jpg"
+Set-ItemProperty -Path 'HKCU:\Control Panel\Desktop\' -Name WallPaper -Value $WallpaperPath
+rundll32.exe user32.dll, UpdatePerUserSystemParameters
+
+
+# Fix PowerToys can not restore from backup file
+Delete temporary file from C:\Users\Moderator\AppData\Local\Temp
+
+# Prompts in Linux
+PS0, PS1, PS2, PS3, PS4
+PS0: '' display after each command prompt
+PS1: '\u:\w\$ ' display before each command prompt
+PS2: '>' display when writing a multi-line command
+PS3: '' display when using the select command
+PS4: '+' display in debug mode; use with set -x, bash -x
+
+PS1='\u:\W\$ '
+PS1='\[\e[34m\]\u\[\e[m\]:\[\e[32m\]\W\[\e[m\]\[\e[37m\]\$\[\e[m\] '
+
+PS0='\n'
