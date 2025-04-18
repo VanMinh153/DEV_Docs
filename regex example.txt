@@ -1,0 +1,13 @@
+# _fgets(str) => fgets(str, sizeof(str), stdin)
+> _fgets\((\w+)\) => fgets($1, sizeof($1), stdin)
+
+# fgets(str, sizeof(str), stdin) => _fgets(str)
+> fgets\((\w+), sizeof\(\1\), stdin\) => _fgets($1)
+
+# fgetws(str, sizeof(str) / sizeof(wchar_t), stdin) => _fgetws(str)
+> fgetws\((\w+), sizeof\(\1\) / sizeof\(wchar_t\), stdin\) => _fgetws($1)
+> fgetws\(([^\s]+), sizeof\(\1\) / sizeof\(wchar_t\),[\s\n]*stdin\) => _fgetws($1)
+
+> \w+
+> [a-zA-Z0-9.]+
+> [^\s]+
