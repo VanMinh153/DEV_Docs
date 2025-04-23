@@ -33,3 +33,7 @@ PS1='\u:\W\$ '
 PS1='\[\e[34m\]\u\[\e[m\]:\[\e[32m\]\W\[\e[m\]\[\e[37m\]\$\[\e[m\] '
 
 PS0='\n'
+
+# Turn off dark mode for Qt apps on Windows
+Create a shortcut to the app with the following target:
+"C:\Program Files\YourApp\YourApp.exe" -platform windows:darkmode=0
